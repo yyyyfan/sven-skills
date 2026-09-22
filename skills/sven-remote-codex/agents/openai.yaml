@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sven 远程 Codex"
+  short_description: "为 Linux 配置桌面端远程 Codex、本地代理转发和个人数据隔离"
+  default_prompt: "使用 $sven-remote-codex 配置我的 Linux 远程服务器，使用本地 7897 代理和 ~/.sven/.codex 数据目录。"
