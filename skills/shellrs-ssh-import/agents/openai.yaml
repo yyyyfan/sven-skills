@@ -1,0 +1,4 @@
+interface:
+  display_name: "ShellRS SSH 配置导入"
+  short_description: "将本地 SSH 配置导入 ShellRS，备份数据库并核验主机和凭据关联"
+  default_prompt: "使用 $shellrs-ssh-import 将本地 SSH 主机配置导入 ShellRS，并报告备份及验证结果。"
