@@ -39,3 +39,11 @@ GitHub 保存技能文件版本。本地技能修改需要提交和推送；其�
 > 使用 $shellrs-ssh-import 将本地 SSH 配置直接写入 ShellRS 的 SQLite，保留已有配置，先备份并核验导入结果。
 
 离线方式需要 ShellRS 完全退出，不需要启用外部 CLI。数据库结构和凭据格式按本机版本核对；配置导入成功与实际连接成功分别验证。
+
+## grok（Grok Bot 专属技能）
+
+`skills/grok/` 下存放 Grok Bot 使用的技能。
+
+### hf-to-obs-transfer
+
+从 Hugging Face 下载数据集或模型并转存到华为云 OBS。内置实测最优参数：下载 8 并发（约 600 MB/s），`obsutil` 上传 16 线程、16MB 分片（单进程约 34 MB/s），3 个上传进程并行、边下边传（合计约 60–74 MB/s，每 100GB 约 26 分钟）。仓库不包含 AK/SK，需在本机 `~/.obsutilconfig` 自行配置。
