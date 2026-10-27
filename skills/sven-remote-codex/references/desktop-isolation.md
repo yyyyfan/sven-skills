@@ -54,7 +54,15 @@ exec "$HOME/.sven/opt/codex/current/bin/codex" "$@"
 
 在个人 CODEX_HOME 的 config.toml 中设置 `cli_auth_credentials_store = "file"`，用于确保凭据写入个人目录，而不是共用用户的系统钥匙串。登录也运行同一入口。
 
-## 独立隧道
+## CLI 共用代理（可选）
+
+当用户明确要求 Codex + Claude 或普通终端统一使用代理时，可在该用户的 Bash 启动文件中添加带边界标记的代理块，使用本次已验证的远程转发端口。设置 HTTP_PROXY、HTTPS_PROXY 及其小写形式，NO_PROXY/no_proxy 保留 localhost、127.0.0.1、::1，清除冲突的 ALL_PROXY/all_proxy。这是用户选择的作用域，不要求其他共用账号采用相同设置；共用 UID 时说明会影响该账号所有新终端。
+
+保留原文件备份及已有 CODEX_HOME 隔离配置。先检查 mihomo/clashctl 等旧启动片段与代理覆盖；只有用户授权关闭时才停用。将代理块放在不会被后续配置覆盖的位置。新建交互式 Shell 检查实际变量，通过不带 -x 的 curl 验证默认代理生效；对已安装的 CLI 再分别检查实际启动环境。终端配置生效不等于 Claude 已安装、已登录或模型请求已验证，安装和账号授权按本次范围处理。
+
+报告旧终端需要执行 source ~/.bashrc 或重新登录。GUI、systemd 服务与其他非交互启动路径需单独验证，不能假定继承终端环境。撤销仅删除本次标记块并重开终端。
+
+## 独立隧道示意
 
 示意命令（主机别名和端口按本次配置）：
 
