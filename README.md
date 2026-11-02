@@ -40,6 +40,20 @@ GitHub 保存技能文件版本。本地技能修改需要提交和推送；其�
 
 离线方式需要 ShellRS 完全退出，不需要启用外部 CLI。数据库结构和凭据格式按本机版本核对；配置导入成功与实际连接成功分别验证。
 
+## easytier
+
+用 EasyTier 把有公网 IP 的中继、无公网 IP 的节点和本机组成虚拟局域网。覆盖二进制安装（GitHub 不可达时改为本机下载再 `scp`）、systemd 或 tmux 常驻、固定 VIP、虚拟网卡上的密钥 SSH 与 iptables，以及 `easytier-cli` 验证。这是通用组网技能，放在 `skills/easytier/`，不属于 `skills/grok/`。仓库不包含网络密码、私钥或真实公网地址。
+
+### 安装与使用
+
+> 使用 skill-installer 从 https://github.com/yyyyfan/sven-skills 安装 skills/easytier。
+
+安装后重新打开 Codex，使用：
+
+> 使用 $easytier 在公网机和内网机之间组网，只开放 SSH。
+
+提供网络名、各节点虚拟 IP、公网中继地址和监听端口；网络密码只放在目标机上权限为 600 的本地文件里。
+
 ## grok（Grok Bot 专属技能）
 
 `skills/grok/` 下存放 Grok Bot 使用的技能。
